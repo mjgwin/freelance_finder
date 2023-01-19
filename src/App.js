@@ -4,14 +4,16 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Route, Routes } from "react-router";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import Browse from "./components/Browse";
+import Create from "./components/Create";
 
 const mainTheme = createTheme({
   palette: {
     background: {
-      default: "#222222",
+      default: "#ffffff",
     },
     primary: {
-      main: "#0971f1", //this one matters for actually changing the color
+      main: "#ecb3ff", //this one matters for actually changing the color
     },
   },
 });
@@ -24,9 +26,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/tutorials" element={<Tutorials />}/>
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<About />} /> */}
+          <Route path="/Browse" element={<Browse />}/>
+          <Route path="/Create" element={<Create />} />
         </Routes>
       </ThemeProvider>
     </div>

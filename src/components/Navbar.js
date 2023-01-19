@@ -22,7 +22,7 @@ const Navbar = () => {
                                     key={page}
                                     component={Link}
                                     to={page === "Home" ? "/" : `/${page}`}
-                                    sx={{ my: 2, color: 'white', display: 'block', marginX: 2}}
+                                    sx={{ my: 2, color: 'black', display: 'block', marginX: 2}}
                                 >
                                     {page}
                                 </Button>
