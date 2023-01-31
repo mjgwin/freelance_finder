@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Browse from "./components/Browse";
 import Create from "./components/Create";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 const mainTheme = createTheme({
   palette: {
@@ -28,6 +30,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Browse" element={<Browse />}/>
           <Route path="/Create" element={<Create />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Signup" element={<Signup />} />
         </Routes>
       </ThemeProvider>
     </div>

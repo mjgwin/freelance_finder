@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import React from "react";
 
 const Navbar = () => {
-    const pages = ["Home", "Create", "Browse"];
+    const pages = ["Home", "Create", "Browse", "Login", "Signup"];
 
   return(
     <div>
