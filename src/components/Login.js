@@ -1,16 +1,17 @@
 import { Typography, Card, CardContent, TextField, Button } from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import React, { useState } from 'react'
+import {signin_user} from '../auth_signup'
 
 const Login = () => {
 
-    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [formSubmitted, setFormSubmitted] = useState(false)
 
     function handleFormInput(e){
-        if(e.target.id === "username-input"){
-          setUsername(e.target.value)
+        if(e.target.id === "email-input"){
+          setEmail(e.target.value)
         }else if(e.target.id === "password-input"){
           setPassword(e.target.value)
         }   
@@ -20,12 +21,12 @@ const Login = () => {
     
         try{
           //Attempt to login user with credentials here
-          console.log("Fake login with username: " + username + " and password: " + password)
+          signin_user(email, password)
         } catch(e) {
           console.error("Error signing in: ", e)
         }
     
-        setUsername("")
+        setEmail("")
         setPassword("")
         setFormSubmitted(true)
       }
@@ -39,7 +40,7 @@ const Login = () => {
             <Card>
             <CardContent>
               <Stack spacing={4} sx={{ mt: 3 }}>
-                <TextField required id="username-input" label="Username" variant="filled" onChange={handleFormInput} value={username} />
+                <TextField required id="email-input" label="Email" variant="filled" onChange={handleFormInput} value={email} />
                 <TextField required type="password" id="password-input" label="Password" variant="filled" onChange={handleFormInput} value={password} />
                 <Button variant="contained" color="primary" onClick={handleSubmit}>Login</Button>
               </Stack>

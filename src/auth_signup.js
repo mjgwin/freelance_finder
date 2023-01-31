@@ -6,7 +6,7 @@ export const signup_user = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password).then(
         (userCredential) => {
             const user = userCredential.user;
-            console.log(user)
+            console.log("User creation sucess!")
         }
     ).catch(
         (error) => {
@@ -22,7 +22,7 @@ export const signin_user = (email, password) => {
     signInWithEmailAndPassword(auth, email, password).then(
         (userCredential) => {
             const user = userCredential.user;
-            console.log(user)
+            console.log("Sign in success!")
         }
     ).catch(
         (error) => {
