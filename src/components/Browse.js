@@ -28,7 +28,7 @@ const Browse = () => {
         postings.map((post) => {
           return (
             //make card for each post here
-            <div></div>
+            <div key={post.id}></div>
           )
         })
       }</div>
