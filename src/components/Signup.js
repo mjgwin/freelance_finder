@@ -4,7 +4,7 @@ import { Box, Stack } from '@mui/system'
 import { useState } from 'react'
 import { signup_user } from '../auth_signup'
 
-const Signup = () => {
+const Signup = ({currUser}) => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -36,19 +36,24 @@ async function handleSubmit(){
   return (
     <div>
         <Box display="flex" justifyContent="center" alignItems="center">
-            <Stack spacing={4} sx={{ mt: 3 }}>
-                <Typography variant="h4" align="center">Use the form below to sign up for a new Freelance Finder account!</Typography>
+        {currUser === null ? 
+          <Stack spacing={4} sx={{ mt: 3 }}>
+            <Typography variant="h4" align="center">Use the form below to sign up for a new Freelance Finder account!</Typography>
 
             <Card>
-            <CardContent>
-              <Stack spacing={4} sx={{ mt: 3 }}>
-                <TextField required id="email-input" label="Email" variant="filled" onChange={handleFormInput} value={email} />
-                <TextField required type="password" id="password-input" label="Password" variant="filled" onChange={handleFormInput} value={password} />
-                <Button variant="contained" color="primary" onClick={handleSubmit}>Signup</Button>
-              </Stack>
-            </CardContent>
+              <CardContent>
+                <Stack spacing={4} sx={{ mt: 3 }}>
+                  <TextField required id="email-input" label="Email" variant="filled" onChange={handleFormInput} value={email} />
+                  <TextField required type="password" id="password-input" label="Password" variant="filled" onChange={handleFormInput} value={password} />
+                  <Button variant="contained" color="primary" onClick={handleSubmit}>Signup</Button>
+                </Stack>
+              </CardContent>
             </Card>
-            </Stack>
+          </Stack>
+          :
+          <Typography sx={{ mt: 3 }} variant="h4" align="center">Currently signed in with email: {currUser.email}</Typography>
+        }
+            
         </Box>
     </div>
   )

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Route, Routes } from "react-router";
+import { onAuthStateChanged } from "firebase/auth";
+import {auth} from "./firebase"
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Browse from "./components/Browse";
@@ -21,6 +23,19 @@ const mainTheme = createTheme({
 });
 
 function App() {
+
+  const [currUser, setCurrUser] = useState(null)
+
+  onAuthStateChanged(auth, (user) => {
+    if(user){
+        console.log(`Signed in with ${user.uid}`)
+        setCurrUser(user)
+    }else{
+        console.log("Not signed in")
+        setCurrUser(null)
+    }
+  })
+
   return (
     <div>
       <ThemeProvider theme={mainTheme}>
@@ -30,8 +45,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Browse" element={<Browse />}/>
           <Route path="/Create" element={<Create />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Login" element={<Login currUser={currUser} />} />
+          <Route path="/Signup" element={<Signup currUser={currUser} />} />
         </Routes>
       </ThemeProvider>
     </div>
