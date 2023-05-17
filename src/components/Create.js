@@ -4,8 +4,6 @@ import { Box, Stack } from "@mui/system";
 import { Card, CardContent, TextField, Typography, Button ,
 Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@mui/material";
 
-import {collection, addDoc} from 'firebase/firestore'
-import {db} from '../firebase'
 
 const Create = () => {
 
@@ -36,11 +34,7 @@ const Create = () => {
     })
 
     try{
-      const docRef = await addDoc(collection(db, "job_postings"), {
-        user_name: name,
-        posting_name: postingName,
-        posting_description: postingDescription
-      })
+      //post doc to db here
       console.log("Document written with id: ", docRef.id)
     } catch(e) {
       console.error("Error adding doc: ", e)

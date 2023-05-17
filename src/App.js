@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Route, Routes } from "react-router";
-import { onAuthStateChanged } from "firebase/auth";
-import {auth} from "./firebase"
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Browse from "./components/Browse";
@@ -26,19 +24,10 @@ function App() {
 
   const [currUser, setCurrUser] = useState(null)
 
-  onAuthStateChanged(auth, (user) => {
-    if(user){
-        console.log(`Signed in with ${user.uid}`)
-        setCurrUser(user)
-    }else{
-        console.log("Not signed in")
-        setCurrUser(null)
-    }
-  })
+  //if auth state changes, set currUser here
 
   return (
-    <div>
-      <ThemeProvider theme={mainTheme}>
+    <div> <ThemeProvider theme={mainTheme}>
         <CssBaseline />
         <Navbar />
         <Routes>

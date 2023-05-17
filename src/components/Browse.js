@@ -1,6 +1,4 @@
 import React from 'react'
-import {collection, getDocs} from 'firebase/firestore'
-import {db, auth} from '../firebase'
 import {useState, useEffect} from 'react'
 
 const Browse = () => {
@@ -11,13 +9,7 @@ const Browse = () => {
 
   useEffect(() => {
     const fetchPostings = async () => {
-      await getDocs(collection(db, "job_postings")).then(
-        (querySnapshot) => {
-            const newData = querySnapshot.docs.map((doc) => {return {"id": doc.id, "data": doc.data()}})
-            setPostings(newData)
-            console.log(newData)
-        }
-      )
+      //get db items here
     }
 
     fetchPostings().catch(console.error)
